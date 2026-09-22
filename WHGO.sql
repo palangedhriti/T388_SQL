@@ -31,3 +31,16 @@ group by duration;
 select duration,count(*) from projects where duration>=20
 group by duration having count(*)>=2
 order by duration asc;
+select *from employee order by Employeeid desc limit 5;
+select * from employee limit 3,5;
+select distinct department from employee;
+select distinct gender from employee;
+select distinct age from employee;
+select * from projects;
+select * from projects where employeeid is not null;
+select * from projects where employeeid is null; 
+update projects set employeeid = 1003 where projectid=6;
+
+-- AUTO increment --  
+desc projects;
+
