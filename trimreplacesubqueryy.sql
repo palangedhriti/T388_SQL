@@ -61,3 +61,40 @@ select max(salary) from employee;
 
 select max(salary) from employee where salary <(select max(salary) from employee);-- to show 2nd highest slary--
 select max(salary) from employee  where salary <(select max(salary) from employee where salary <(select max(salary) from employee));
+
+SELECT ROUND(123.4567, 2);
+SELECT MIN(salary) FROM employee;
+select max(age) from employee where age>( select max(age) from employee where age<( select max(age) from employee where age));
+
+select*from employee;
+
+-- multiple row subquery --
+select * from employee;
+use t388;
+select age from employee where employeeid in(1002,1003);
+select * from employee
+where AGE IN(select age from employee where employeeid in(1002,1003));
+
+select * from employee
+where LOCATION IN (select LOCATION from employee where EMPLOYEEID in(1001,1002));
+select LOCATION from employee where EMPLOYEEID in(1001);
+
+-- MULTIPLE SUBQUERRY--
+
+-- QUERTY IWTH'ANY'--
+SELECT DISTINCT SALARY FROM EMPLOYEE;
+SELECT * FROM EMPLOYEE
+WHERE SALARY > ANY (select salary from employee where EMPLOYEEID BETWEEN 1001 AND 1003);
+select *from employee
+WHERE SALARY < ANY (select salary from employee where EMPLOYEEID BETWEEN 1001 AND 1003);
+
+-- querry with 'all'--
+select *from employee
+WHERE SALARY > All (select salary from employee where EMPLOYEEID BETWEEN 1001 AND 1003);
+select *from employee
+WHERE SALARY < All (select salary from employee where EMPLOYEEID BETWEEN 1003 AND 1005);
+select *from employee
+WHERE SALARY < All (select salary from employee where EMPLOYEEId in ( 1003, 1005)); -- in-- 
+select *from employee
+WHERE SALARY < All (select salary from employee where EMPLOYEEId in ( 1001, 1003));
+
