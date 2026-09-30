@@ -98,3 +98,62 @@ WHERE SALARY < All (select salary from employee where EMPLOYEEId in ( 1003, 1005
 select *from employee
 WHERE SALARY < All (select salary from employee where EMPLOYEEId in ( 1001, 1003));
 
+
+-- joins --
+select*from salary ;
+select *from namee;
+-- INNER JOIN --
+select namee.ID, salary  FROM namee inner join Salary on namee.ID = Salary.ID;
+
+-- LEFT JOIN--
+select namee.ID ,NAME,salary from namee left join salary on salary.ID = namee.ID;
+
+-- right join --
+select salary.ID ,NAME,salary from namee  right join salary on salary.ID = namee.ID;
+
+
+-- OUTER JOIN --
+USE T388;
+SELECT * FROM namee;
+SELECT * FROM salary;
+
+select n.id as name_id,s.id as salary_id,name,salary
+from namee as n 
+left join
+salary as s 
+on s.id = n.id
+union
+select n.id as name_id,s.id as salary_id, NAME,salary 
+from namee as n 
+right join 
+salary as s 
+on s.id=n.id;
+
+-- 10th pract--
+-- FORIGIN KEY --
+
+create database FK_T388;
+USE FK_T388;
+ CREATE TABLE students  
+(ID int primary key auto_increment,
+NAME varchar(20));
+insert into students values 
+(1,"Kunal");
+
+desc students;
+select *from students;
+insert into students(name)values
+("Suman");
+delete from students where id=2;
+
+create table info
+(ID INT,
+SCORE INT);
+DROP table info;
+create table info
+(ID INT,
+SCORE INT,
+foreign key(ID) references students(ID));
+insert into info values (1,300);
+select*from info;
+
